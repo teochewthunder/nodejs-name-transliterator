@@ -1,2 +1,2 @@
-# nodejs-name-translator
+# nodejs-name-transliterator (TBA)
 
