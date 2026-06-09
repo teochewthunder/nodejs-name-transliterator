@@ -1,5 +1,10 @@
 <h1>Chinese Name Transliterator</h1>
 <label for="txtFullChineseName">Full Chinese Name</label>
-<input id="txtFullChineseName" pattern="^[\u4E00-\u9FFF\u3400-\u4DBF\uF900-\uFAFF]+$" />
+<input id="txtFullChineseName" />
 
 <!--LANGUAGES-->
+
+<script src="/js/functions.js"></script>
+<script>
+    setupNameValidation("txtFullChineseName");
+</script>
