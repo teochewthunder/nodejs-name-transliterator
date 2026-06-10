@@ -1,9 +1,19 @@
 <h1>Chinese Name Transliterator</h1>
 <label for="txtFullChineseName">Full Chinese Name</label>
 <input id="txtFullChineseName" />
-
+<button id="btnTransliterate">TRANSLITERATE</button>
 <!--LANGUAGES-->
 
 <script>
-    setupNameValidation("txtFullChineseName");
+    document.getElementById("goBtn").addEventListener("click", () => {
+        const name = document.getElementById("cnName").value.trim();
+    
+        if (!isValidChineseName(name)) {
+            document.getElementById("error").textContent =
+                "Please enter a Chinese name using Chinese characters only.";
+            return;
+        }
+    
+        // Continue with your fetch() or other logic
+    });
 </script>
