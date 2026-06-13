@@ -9,6 +9,7 @@ pnpm-debug.log*
 .env
 .env.test
 .env.production
+api.js
 
 # Logs
 logs
