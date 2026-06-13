@@ -1,12 +1,15 @@
 <h1>Chinese Name Transliterator</h1>
 <label for="txtFullChineseName">Full Chinese Name</label>
-<input id="txtFullChineseName" />
+<input id="txtFullChineseName" maxlength="4" />
+<br />
 <button id="btnTransliterate">TRANSLITERATE</button>
+<span id="error"></span>
 <!--LANGUAGES-->
 
 <script>
-    document.getElementById("goBtn").addEventListener("click", () => {
-        const name = document.getElementById("cnName").value.trim();
+    document.getElementById("btnTransliterate").addEventListener("click", () => {
+    	document.getElementById("error").textContent = "";
+        const name = document.getElementById("txtFullChineseName").value.trim();
     
         if (!isValidChineseName(name)) {
             document.getElementById("error").textContent =
