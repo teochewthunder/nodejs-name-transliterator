@@ -4,7 +4,18 @@
 <br />
 <button id="btnTransliterate">TRANSLITERATE</button>
 <span id="error"></span>
-<!--LANGUAGES-->
+
+{{#each options}}
+<div>
+    <label>
+        <input
+            type="checkbox"
+            name="languages"
+            value="{{value}}">
+        {{label}}
+    </label>
+</div>
+{{/each}}
 
 <script>
     document.getElementById("btnTransliterate").addEventListener("click", () => {
