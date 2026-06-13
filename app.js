@@ -1,5 +1,5 @@
 const api = require("./api.js");
-const options = require("./options.js");
+const options = require("./assets/data/options.js");
 var express = require("express");
 
 var app = express();
