@@ -27,7 +27,34 @@
                 "Please enter a Chinese name using Chinese characters only.";
             return;
         }
+
+        //make sure at least one option checked.
     
-        // Continue with your fetch() or other logic
+        try {
+            const response = await fetch("/transliterate", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    prompt: name
+                })
+            });
+    
+            const data = await response.json();
+    
+            if (!data.success) {
+                document.getElementById("error").textContent = data.error;
+                return;
+            }
+    
+            console.log(data.result);
+    
+            // Example: display result
+            document.getElementById("txtRomanizedName").value = data.result;
+        } catch (err) {
+            document.getElementById("error").textContent = "An unexpected error occurred.";
+            console.error(err);
+        }        
     });
 </script>
