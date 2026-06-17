@@ -20,16 +20,32 @@
 <script>
     document.getElementById("btnTransliterate").addEventListener("click", () => {
     	document.getElementById("error").textContent = "";
+        
         const name = document.getElementById("txtFullChineseName").value.trim();
     
         if (!isValidChineseName(name)) {
-            document.getElementById("error").textContent =
-                "Please enter a Chinese name using Chinese characters only.";
+            document.getElementById("error").textContent = "Please enter a Chinese name using Chinese characters only.";
             return;
         }
 
-        //make sure at least one option checked.
-    
+        const selectedOptions = document.querySelectorAll(
+            "input[name='languages']:checked"
+        );
+        
+        if (selectedOptions.length === 0) {
+            document.getElementById("error").textContent = "Please select at least one transliteration option.";
+            return;
+        }
+
+        //build prompt
+        let prompt = "Provide the romanized versions of the Chinese name '${`name`}' (without intonations) in the following languages in a JSON object. The object should contain the following text properties. ";
+        selectedOptions.forEach((x) => {
+            prompt += "'${`x.value`}',";
+        });
+
+        console.log(prompt);
+        return;
+        
         try {
             const response = await fetch("/transliterate", {
                 method: "POST",
@@ -37,7 +53,7 @@
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify({
-                    prompt: name
+                    prompt: prompt
                 })
             });
     
