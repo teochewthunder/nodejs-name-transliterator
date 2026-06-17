@@ -1,23 +1,28 @@
 const options = [
     {
         value: "wade_giles",
-        label: "Mandarin (Wade-Giles)",
-        prompt: "Mandarin using Wade-Giles romanization"
+        label: "Wade-Giles",
+        prompt: "Wade-Giles romanization"
     },
     {
-        value: "jyutping",
-        label: "Cantonese (Jyutping)",
-        prompt: "Cantonese using Jyutping with tone numbers"
+        value: "hokkien",
+        label: "Hokkien",
+        prompt: "Hokkien romanization"
+    },
+    {
+        value: "cantonese",
+        label: "Cantonese",
+        prompt: "Cantonese (Jyutping) romanization"
     },
     {
         value: "korean",
-        label: "Korean (Hangul)",
-        prompt: "Korean in Hangul"
+        label: "Korean",
+        prompt: "Korean (Hangul) romanization"
     },
     {
         value: "vietnamese",
-        label: "Vietnamese (Sino-Vietnamese)",
-        prompt: "Vietnamese Sino-Vietnamese reading"
+        label: "Vietnamese",
+        prompt: "Vietnamese Sino-Vietnamese romanization"
     }
 ];
 
