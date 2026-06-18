@@ -18,7 +18,7 @@
 {{/each}}
 
 <script>
-    document.getElementById("btnTransliterate").addEventListener("click", () => {
+    document.getElementById("btnTransliterate").addEventListener("click", async () => {
     	document.getElementById("error").textContent = "";
         
         const name = document.getElementById("txtFullChineseName").value.trim();
@@ -37,11 +37,12 @@
             return;
         }
 
+        let properties = [...selectedOptions]
+        .map(x => `"${x.value}"`)
+        .join(", ");
+
         //build prompt
-        let prompt = "Provide the romanized versions of the Chinese name '${`name`}' (without intonations) in the following languages in a JSON object. The object should contain the following text properties. ";
-        selectedOptions.forEach((x) => {
-            prompt += "'${`x.value`}',";
-        });
+        let prompt = `Return only a valid JSON object. The object should contain the following properties only: ${properties}. The value of each property should be the equivalent romanized version of the Chinese name "${name}" (without intonations) only. In the event of ambiguity, pick the first reasonable result.`;
 
         console.log(prompt);
         return;
