@@ -1,9 +1,8 @@
 <h1>Chinese Name Transliterator</h1>
 <label for="txtFullChineseName">Full Chinese Name</label>
 <input id="txtFullChineseName" maxlength="4" />
+
 <br />
-<button id="btnTransliterate">TRANSLITERATE</button>
-<span id="error"></span>
 
 {{#each options}}
 <div>
@@ -14,8 +13,15 @@
             value="{{value}}">
         {{label}}
     </label>
+    <span class="txtResult" id="result_{{value}}"></span>
 </div>
 {{/each}}
+
+<br />
+
+<button id="btnTransliterate">TRANSLITERATE</button>
+<span id="error"></span>
+
 
 <script>
     document.getElementById("btnTransliterate").addEventListener("click", async () => {
