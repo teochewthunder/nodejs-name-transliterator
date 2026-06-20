@@ -47,11 +47,10 @@
         .map(x => `"${x.value}"`)
         .join(", ");
 
-        //build prompt
         let prompt = `Return only a valid JSON object. The object should contain the following properties only: ${properties}. The value of each property should be the equivalent romanized version of the Chinese name "${name}" (without intonations) only. In the event of ambiguity, pick the first reasonable result.`;
 
-        console.log(prompt);
-        return;
+        //console.log(prompt);
+        //return;
         
         try {
             const response = await fetch("/transliterate", {
@@ -71,10 +70,9 @@
                 return;
             }
     
-            console.log(data.result);
+            console.log(data);
     
-            // Example: display result
-            document.getElementById("txtRomanizedName").value = data.result;
+            // Example: display results
         } catch (err) {
             document.getElementById("error").textContent = "An unexpected error occurred.";
             console.error(err);
