@@ -56,7 +56,7 @@ app.post("/transliterate", async (req, res) => {
 		}
 	
 		const data = await response.json();
-	console.log(JSON.stringify(data,null,2));
+	//console.log(JSON.stringify(data,null,2));
 		res.json({
 			success: true,
 			result: data.output[1].content[0].text

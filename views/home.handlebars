@@ -70,8 +70,16 @@
                 return;
             }
     
-            console.log(data);
-    
+            console.log(JSON.parse(data.result));
+
+            const transliterations = JSON.parse(data.result);
+
+            const txtResult = document.getElementsByClassName("txtResult");
+            Array.from(txtResult).forEach((x) => {
+            	let propName = x.id.replace("result_", "");
+            	x.innerHTML = (transliterations[propName] ? transliterations[propName] : ""); 
+            });
+
             // Example: display results
         } catch (err) {
             document.getElementById("error").textContent = "An unexpected error occurred.";
