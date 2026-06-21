@@ -6,7 +6,8 @@ body
 
 .overlay
 {
-    display: absolute;
+    postition: absolute;
+    display: none;
     left: 0;
     top: 0;
     width: 100%;
