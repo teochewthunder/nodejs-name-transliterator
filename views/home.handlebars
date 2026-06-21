@@ -49,9 +49,8 @@
 
         let prompt = `Return only a valid JSON object. The object should contain the following properties only: ${properties}. The value of each property should be the equivalent romanized version of the Chinese name "${name}" (without intonations) only. In the event of ambiguity, pick the first reasonable result.`;
 
-        //console.log(prompt);
-        //return;
-        
+        document.getElementById("pnlOverlay").style.display = "block";
+            
         try {
             const response = await fetch("/transliterate", {
                 method: "POST",
@@ -62,6 +61,8 @@
                     prompt: prompt
                 })
             });
+
+            document.getElementById("pnlOverlay").style.display = "none";
     
             const data = await response.json();
     
