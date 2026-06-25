@@ -1,8 +1,7 @@
 <h1>Chinese Name Transliterator</h1>
-<label for="txtFullChineseName">Full Chinese Name</label>
-<input id="txtFullChineseName" maxlength="4" />
+<div><label for="txtFullChineseName">Full Chinese Name</label></div>
+<div><input id="txtFullChineseName" maxlength="4" /></div>
 
-<br />
 
 {{#each options}}
 <div>
@@ -13,11 +12,11 @@
             value="{{value}}">
         {{label}}
     </label>
+</div>
+<div>
     <span class="txtResult" id="result_{{value}}"></span>
 </div>
 {{/each}}
-
-<br />
 
 <button id="btnTransliterate">TRANSLITERATE</button>
 <span id="error"></span>
