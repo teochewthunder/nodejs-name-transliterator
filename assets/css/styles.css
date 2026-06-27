@@ -15,6 +15,7 @@ body
     background-color: rgba(0, 0, 0, 0.9);
     color: rgb(255, 255, 255);
     text-align: center;
+    animation: pulse 1s infinite;
 }
 
 #pnlContainer
@@ -49,6 +50,16 @@ body
 .hourglass
 {
     font-size: 5em;
+}
+
+@keyframes pulse 
+{
+  0% {
+    color: rgb(255, 255, 255);
+  }
+  50% {
+    color: rgb(100, 100, 100);
+  }
 }
 
 button
