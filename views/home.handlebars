@@ -1,35 +1,37 @@
 <h1>Chinese Name Transliterator</h1>
-<div><label for="txtFullChineseName">Full Chinese Name</label></div>
-<div><input id="txtFullChineseName" maxlength="4" /></div>
+
+<div id="pnlSelection">
+	<div><label for="txtFullChineseName">Full Chinese Name</label></div>
+	<div><input id="txtFullChineseName" maxlength="4" /></div>
 
 
-{{#each options}}
-<div>
-    <label>
-        <input
-            type="checkbox"
-            name="languages"
-            value="{{value}}">
-        {{label}}
-    </label>
+	{{#each options}}
+	<div>
+	    <label>
+	        <input
+	            type="checkbox"
+	            name="languages"
+	            value="{{value}}">
+	        {{label}}
+	    </label>
+	</div>
+	<div>
+	    <span class="txtResult" id="result_{{value}}"></span>
+	</div>
+	{{/each}}
 </div>
-<div>
-    <span class="txtResult" id="result_{{value}}"></span>
-</div>
-{{/each}}
 
 <button id="btnTransliterate">TRANSLITERATE</button>
-<span id="error"></span>
-
+<span id="pnlError"></span>
 
 <script>
     document.getElementById("btnTransliterate").addEventListener("click", async () => {
-    	document.getElementById("error").textContent = "";
+    	document.getElementById("pnlError").textContent = "";
         
         const name = document.getElementById("txtFullChineseName").value.trim();
     
         if (!isValidChineseName(name)) {
-            document.getElementById("error").textContent = "Please enter a Chinese name using Chinese characters only.";
+            document.getElementById("pnlError").textContent = "Please enter a Chinese name using Chinese characters only.";
             return;
         }
 
@@ -38,7 +40,7 @@
         );
         
         if (selectedOptions.length === 0) {
-            document.getElementById("error").textContent = "Please select at least one transliteration option.";
+            document.getElementById("pnlError").textContent = "Please select at least one transliteration option.";
             return;
         }
 
@@ -66,7 +68,7 @@
             const data = await response.json();
     
             if (!data.success) {
-                document.getElementById("error").textContent = data.error;
+                document.getElementById("pnlError").textContent = data.error;
                 return;
             }
     
@@ -82,7 +84,7 @@
 
             // Example: display results
         } catch (err) {
-            document.getElementById("error").textContent = "An unexpected error occurred.";
+            document.getElementById("pnlError").textContent = "An unexpected error occurred.";
             console.error(err);
         }        
     });
